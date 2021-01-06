@@ -1,0 +1,21 @@
+{
+  "autoload": {
+    "classmap": [
+      "App"
+    ]
+  },
+  "require": {
+    "php": ">=7.2",
+    "ext-json": "*",
+    "ext-pdo": "*"
+  },
+  "require-dev": {
+    "symfony/var-dumper": "@stable",
+    "phpmd/phpmd": "^2.9",
+    "squizlabs/php_codesniffer": "3.*",
+    "fzaninotto/faker": "^1.9"
+  },
+  "require": {
+    "nesbot/carbon": "^2.41"
+  }
+}
