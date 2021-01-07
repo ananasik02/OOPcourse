@@ -7,8 +7,14 @@ use App\Repositories\ListRepository;
     <form style="display: inline-block" action="?action=create-task" method="post">
         <button class= "btn btn-success">Create Song</button>
     </form>
+    <form style="display: inline-block" action="?action=enter-user" method="post">
+        <button class= "btn btn-success">Home</button>
+    </form>
     <form style="display: inline-block" action="?action=sort-by-singer" method="post">
         <button class= "btn btn-success">Sort by singer</button>
+    </form>
+    <form style="display: inline-block" action="?action=sort-by-path" method="post">
+        <button class= "btn btn-success">Sort by path to file</button>
     </form>
     <form style="display: inline-block" action="?action=search-by-singer" method="post">
         <input class="form-control" placeholder="Enter singer" id="singer" name="singer" required>
@@ -34,6 +40,7 @@ use App\Repositories\ListRepository;
         </tr>
         </thead>
         <tbody>
+
         <?php foreach ($listOfSongs as $item) : ?>
                 <tr>
                     <td><?php echo $item->id ?></td>
@@ -42,7 +49,7 @@ use App\Repositories\ListRepository;
                     <td><?php echo $item->albom_id ?></td>
                     <td><?php echo $item->year ?></td>
                     <td><?php echo $item->style_id ?></td>
-                    <td><?php echo $item->path ?></td>
+                    <td><a href="<?php echo $item->path ?>"></a></td>
                     <td><?php echo $item->duration ?></td>
                     <td><?php echo $item->codec ?></td>
                 </tr>

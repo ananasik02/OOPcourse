@@ -6,6 +6,8 @@ use App\Repositories\AlbomsRepository;
 use App\Repositories\ListRepository;
 use App\Repositories\UsersRepository;
 use App\DB\DB;
+use Carbon\Carbon;
+use DateTime;
 
 class SongsList
 {
@@ -47,6 +49,7 @@ class SongsList
             $maxSong = $this->getTheLongestSong();
             for($j=$i+1; $j<count($Songs); $j++){
                 if($Songs[$j]->style == $style && $Songs[$j]->duration == $maxSong->duration){
+                    $listOfSongs [] = $Songs[$i];
                     $listOfSongs [] = $Songs[$j];
                 }
             }
@@ -87,12 +90,47 @@ class SongsList
         return $listOfSongs;
     }
 
+    public function sortByPath()
+    {
+        $listOfSongs = $this->songRep->all();
+        $d = count($listOfSongs);
+        for ($gap = $d / 2; $gap >= 1; $gap = $gap/2)
+        {
+            for ($j = $gap; $j < $d; $j++)
+            {
+                for ($i = $j - $gap; $i >= 0; $i = $i-$gap)
+                {
+
+                    if ($listOfSongs[$i+$gap]->path > $listOfSongs[$i]->path)
+                    {
+                        break;
+
+                    }
+                    else
+                    {
+                        $temp = $listOfSongs[$i + $gap];
+                        $listOfSongs[$i + $gap] = $listOfSongs[$i];
+                        $listOfSongs[$i] = $temp;
+
+                    }
+
+                }
+
+            }
+
+        }
+
+        return $listOfSongs;
+    }
+
     public function searchByCodec($codec)
     {
         $AllSongs = $this->songRep->all();
         $listOfSongs = array();
         for($i=0; $i<count($AllSongs); $i++){
-            if($AllSongs[$i]->codec==$codec && $AllSongs[$i]->year > 2011 ){
+            $time = explode(":", $AllSongs[$i]->duration);
+            if($AllSongs[$i]->codec==$codec && $AllSongs[$i]->year > 2011 && $time[0] ==0
+                && $time[1]<2 && $time[2] < 34){
                 $listOfSongs[] = $AllSongs[$i];
             }
         }

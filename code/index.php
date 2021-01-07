@@ -17,7 +17,7 @@ if($requestURL == '/?page' ){
 if (isset($_GET['action'])) {
     $requestedPage = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_STRING);
     if ($requestedPage == 'enter-user' || $requestedPage == 'set-page' || $requestedPage == 'choose-number' || $requestedPage == 'sort-by-singer'
-        || $requestedPage == 'search-by-singer' || $requestedPage == 'search-by-сodec'
+        || $requestedPage == 'search-by-singer' || $requestedPage == 'search-by-сodec' || $requestedPage == 'sort-by-path'
     ) {
         $pageName = $router->direct('list');
     }elseif($requestedPage == 'create-task'  || $requestedPage == 'save-task'){
