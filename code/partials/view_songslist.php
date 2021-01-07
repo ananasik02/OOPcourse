@@ -49,7 +49,15 @@ use App\Repositories\ListRepository;
                     <td><?php echo $item->albom_id ?></td>
                     <td><?php echo $item->year ?></td>
                     <td><?php echo $item->style_id ?></td>
-                    <td><a href="<?php echo $item->path ?>"></a></td>
+                    <td>
+                        <a href="https://www.youtube.com/results?search_query=ed+sheeran">
+                        <img style="max-height: 150px;" src="https://i.pinimg.com/originals/2a/21/f0/2a21f0307835d23191e54bb7e76f4d4f.jpg">
+                        </a>
+                    </td>
+                    <td><a href="https://www.youtube.com/results?search_query=ed+sheeran">
+                            <?php echo $item->path ?>
+                        </a>
+                    </td>
                     <td><?php echo $item->duration ?></td>
                     <td><?php echo $item->codec ?></td>
                 </tr>
