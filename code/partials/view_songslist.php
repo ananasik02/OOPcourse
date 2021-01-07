@@ -87,6 +87,10 @@ use App\Repositories\ListRepository;
     </table>
     <?php endif; ?>
 
+    <p>
+        This song belongs to more that 1 albom <?= $sameSongInAlboms ?>
+    </p>
+
 </div>
 
 <?php

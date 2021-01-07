@@ -50,13 +50,16 @@ if (isset($_GET['action'])){
 //
 //        $sngFactory = new SongsFactory();
 //        $sngFactory->create($faker,70);
-        echo "I am here";
+
 
         $listOfSongs = $sngList->getAll();
 
         $similar = $sngList->sameStyleAndYear();
 
         $maxSong = $sngList->getTheLongestSong();
+
+        $sameSongInAlboms = $sngList->AlbomsWithSameSongs();
+
     }
 }
 

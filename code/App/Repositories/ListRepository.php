@@ -24,7 +24,6 @@ class ListRepository{
         $songsData = $stmt->fetchAll();
         $songsCollection = $this->mapSongs($songsData);
         return $songsCollection;
-
     }
 
     public function getRowsCount()
